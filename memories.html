@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Your Memories</title>
+    <link rel="stylesheet" href="style.css">
+
+```
+<script>
+    if(sessionStorage.getItem("countdownComplete") !== "true"){
+        window.location.replace("index.html?next=memories.html");
+    }
+</script>
+```
+
+</head>
+
+<body class="memories-body">
+
+```
+<video autoplay muted loop playsinline class="video-bg">
+    <source src="your-video.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<nav class="top-controls" aria-label="Page controls">
+
+    <button class="control-btn" type="button" onclick="history.back()">
+        &#8592; Back
+    </button>
+
+    <button class="control-btn" type="button" onclick="window.location.href='index.html'">
+        &#127968; Home
+    </button>
+
+    <button class="control-btn" type="button" onclick="toggleTheme()">
+        &#127769; Theme
+    </button>
+
+</nav>
+
+
+<main class="memories">
+
+    <h1>&#128150;Beautiful Memories &#128150;</h1>
+
+
+    <button class="music-btn" id="memoryMusicButton" type="button" onclick="playMemoryMusic()">
+        &#127925;Guess the Song😉
+    </button>
+
+    <audio id="memoryMusic" loop>
+        <source src="S2.mpeg" type="audio/mpeg">
+    </audio>
+
+
+    <!-- ==================== MEMORY PHOTOS ==================== -->
+
+    <div class="memory-grid">
+
+        <article class="memory-card">
+            <img src="M3.jpeg" alt="Memory photo 1">
+            <p>💖 Forever grateful for your friendship. &#128149;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="M1.jpg" alt="Memory photo 2">
+            <p>✨ A blessing disguised as a best friend. 💖 &#128150;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="M4.jpeg" alt="Memory photo 3">
+            <p>Forever My Favorite Person &#128153;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="M2.jpeg" alt="Memory photo 4">
+            <p>The Day That Made Me Smile &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R23.jpg" alt="Memory photo 5">
+            <p>🎂 Beautiful today, tomorrow, and always. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R24.jpg" alt="Memory photo 6">
+            <p>🌸 Grace, charm, and endless smiles. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R25.jpg" alt="Memory photo 7">
+            <p>💕 Every picture tells how amazing you are. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R26.jpg" alt="Memory photo 8">
+            <p>✨ The perfect blend of beauty and kindness. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R27.jpg" alt="Memory photo 9">
+            <p>🌷 Smiles, laughter, and beautiful memories. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R28.jpg" alt="Memory photo 10">
+            <p>💖 Making life prettier just by existing. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R29.jpg" alt="Memory photo 11">
+            <p>🎀 Sweet soul, endless sparkle. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R30.jpg" alt="Memory photo 12">
+            <p>🌸 Her smile is my favorite view. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R31.jpg" alt="Memory photo 13">
+            <p>💕 Beautiful moments deserve beautiful people. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R32.jpg" alt="Memory photo 14">
+            <p>✨ The girl who turns ordinary days into special memories. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R33.jpg" alt="Memory photo 15">
+            <p>🌷 A heart as beautiful as her smile. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R34.jpg" alt="Memory photo 16">
+            <p>🎂 One of the best people I've ever known. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R35.jpg" alt="Memory photo 17">
+            <p>🌸 Spreading happiness everywhere she goes. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R41.jpeg" alt="Memory photo 18">
+            <p>💕 Beautiful, strong, and truly inspiring. &#10024;</p>
+        </article>
+
+        <article class="memory-card">
+            <img src="R40.jpg" alt="Memory photo 19">
+            <p>✨ A star that shines effortlessly. &#10024;</p>
+        </article>
+
+    </div>
+
+
+    <!-- ==================== MEMORY VIDEOS ==================== -->
+
+
+    <section class="memory-video-section" aria-label="Memory Video V1">
+
+        <h2>Your Birthday Video 💙</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V1.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V2">
+
+        <h2>Always Sunshine.✨ 💙</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V2.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V3">
+
+        <h2>My Forever Favorite. 💕</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V3.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V4">
+
+        <h2>A Little Piece of Happiness. 🌷</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V4.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V5">
+
+        <h2>Smiles That Brighten Everything. 😊✨</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V5.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V6">
+
+        <h2>My Happy Place. 💙🌸</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V6.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V7">
+
+        <h2>Forever My Favorite Soul. 🦋</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V7.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V8">
+
+        <h2>Pure Happiness, Just Her. 💖</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V8.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V9">
+
+        <h2>The Sweetest Chapter. 📖💕</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V9.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V10">
+
+        <h2>Happiness Looks Like You. ✨</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V10.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V11">
+
+        <h2>My Favorite Human. 🫶💙</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V11.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V12">
+
+        <h2>A Smile Worth Remembering. 😊🌸</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V12.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V13">
+
+        <h2>Simply Beautiful, Always. 💕✨</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V13.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V14">
+
+        <h2>My Everyday Sunshine. ☀️💙</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V14.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V15">
+
+        <h2>The Girl Who Makes Life Brighter. 🌷</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V15.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V16">
+
+        <h2>Forever a Beautiful Memory. 💖</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V16.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V17">
+
+        <h2>Smiles, Memories & Magic. ✨🌸</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V17.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V18">
+
+        <h2>Always & Forever. ✨</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V18.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V19">
+
+        <h2>Forever Special. 💕</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V19.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V20">
+
+        <h2>My Little Sunshine. ☀️</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V20.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V21">
+
+        <h2>Made of Magic. 💙</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V21.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <!-- <section class="memory-video-section" aria-label="Memory Video V22">
+
+        <h2>Forever Cherished. 🌸</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V22.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section> -->
+
+
+    <section class="memory-video-section" aria-label="Memory Video V23">
+
+        <h2>One of a Kind. ✨</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V23.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V24">
+
+        <h2>My Happy Thought. 💖</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V24.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V25">
+
+        <h2>Beautiful Chaos. 🦋</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V25.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <section class="memory-video-section" aria-label="Memory Video V26">
+
+        <h2>Just Beautiful. 💕</h2>
+
+        <div class="memory-video-frame">
+
+            <video class="memoryVideo" controls playsinline preload="metadata">
+
+                <source src="V26.mp4" type="video/mp4">
+
+            </video>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== TOP BUTTON ==================== -->
+
+    <button class="back-top-btn" type="button" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        &#8593; Top
+    </button>
+
+</main>
+
+
+<script>
+
+    /* ==================== DARK / LIGHT THEME ==================== */
+
+    function toggleTheme(){
+
+        document.body.classList.toggle("dark");
+
+        if(document.body.classList.contains("dark")){
+
+            localStorage.setItem("theme","dark");
+
+        }else{
+
+            localStorage.setItem("theme","light");
+
+        }
+
+    }
+
+
+    window.addEventListener("load", () => {
+
+        const theme = localStorage.getItem("theme");
+
+        if(theme === "dark"){
+
+            document.body.classList.add("dark");
+
+        }
+
+    });
+
+
+    /* ==================== MUSIC ==================== */
+
+    const memoryMusic = document.getElementById("memoryMusic");
+
+    const memoryMusicButton = document.getElementById("memoryMusicButton");
+
+    const memoryVideos = Array.from(
+        document.querySelectorAll(".memoryVideo")
+    );
+
+
+    let memoryMusicShouldResume = false;
+
+
+    function setMemoryMusicButton(isPlaying){
+
+        memoryMusicButton.innerHTML = isPlaying
+
+            ? "&#9208; Guess the Song Pause"
+
+            : "&#127925; Guess the Song Play";
+
+    }
+
+
+    function startMemoryMusic(){
+
+        const playRequest = memoryMusic.play();
+
+        if(playRequest){
+
+            playRequest.catch(() => {
+
+                memoryMusicShouldResume = false;
+
+                setMemoryMusicButton(false);
+
+            });
+
+        }
+
+    }
+
+
+    function playMemoryMusic(){
+
+        if(memoryMusic.paused){
+
+            memoryMusicShouldResume = true;
+
+
+            memoryVideos.forEach((video) => {
+
+                if(!video.paused){
+
+                    video.pause();
+
+                }
+
+            });
+
+
+            setMemoryMusicButton(true);
+
+            startMemoryMusic();
+
+        }else{
+
+            memoryMusicShouldResume = false;
+
+            memoryMusic.pause();
+
+            setMemoryMusicButton(false);
+
+        }
+
+    }
+
+
+    /* ==================== VIDEO CONTROL ==================== */
+
+    let activeVideo = null;
+
+    let ignorePauseAutoResume = false;
+
+
+    function pauseOtherVideos(currentVideo){
+
+        ignorePauseAutoResume = true;
+
+
+        memoryVideos.forEach((video) => {
+
+            if(video !== currentVideo && !video.paused){
+
+                video.pause();
+
+            }
+
+        });
+
+
+        window.requestAnimationFrame(() => {
+
+            ignorePauseAutoResume = false;
+
+        });
+
+    }
+
+
+    memoryVideos.forEach((video) => {
+
+
+        video.addEventListener("play", () => {
+
+            const wasMusicPlaying = !memoryMusic.paused;
+
+            memoryMusicShouldResume = wasMusicPlaying;
+
+
+            if(wasMusicPlaying){
+
+                memoryMusic.pause();
+
+            }
+
+
+            pauseOtherVideos(video);
+
+            activeVideo = video;
+
+        });
+
+
+        video.addEventListener("pause", () => {
+
+            if(ignorePauseAutoResume){
+
+                return;
+
+            }
+
+
+            if(video.ended){
+
+                return;
+
+            }
+
+
+            if(activeVideo === video && memoryMusicShouldResume){
+
+                activeVideo = null;
+
+                setMemoryMusicButton(true);
+
+                startMemoryMusic();
+
+            }
+
+        });
+
+
+        video.addEventListener("ended", () => {
+
+            if(activeVideo === video){
+
+                activeVideo = null;
+
+            }
+
+
+            if(memoryMusicShouldResume){
+
+                setMemoryMusicButton(true);
+
+                startMemoryMusic();
+
+            }
+
+        });
+
+    });
+
+
+    memoryMusic.addEventListener("play", () => {
+
+        setMemoryMusicButton(true);
+
+    });
+
+
+    memoryMusic.addEventListener("pause", () => {
+
+        setMemoryMusicButton(false);
+
+    });
+
+
+</script>
+```
+
+</body>
+</html>

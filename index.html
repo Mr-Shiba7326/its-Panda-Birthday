@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Birthday Surprise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="countdown-body">
+
+```
+<!-- Top Controls -->
+<nav class="top-controls" aria-label="Page controls">
+    <button class="control-btn" type="button" onclick="toggleTheme()">
+        &#127769; Theme
+    </button>
+</nav>
+
+
+<!-- Floating Hearts -->
+<div class="hearts" aria-hidden="true">
+    <span>&#128150;</span>
+    <span>&#128149;</span>
+    <span>&#128151;</span>
+    <span>&#128152;</span>
+    <span>&#128157;</span>
+</div>
+
+
+<!-- Top Left Panda -->
+<div class="panda-corner panda-left">
+
+    <img
+        src="p1.png"
+        class="panda-image"
+        id="pandaCutie"
+        alt="Cute panda"
+    >
+
+    <div
+        class="panda-speech"
+        id="pandaCutieSpeech"
+        aria-live="polite"
+    >
+        Hi Cutie 🐼💕
+    </div>
+
+</div>
+
+
+<!-- Top Right Panda -->
+<div class="panda-corner panda-right">
+
+    <img
+        src="p2.png"
+        class="panda-image"
+        id="pandaBaby"
+        alt="Sleeping panda"
+    >
+
+    <div
+        class="panda-speech"
+        id="pandaBabySpeech"
+        aria-live="polite"
+    >
+        Hi Baby 🐼💖
+    </div>
+
+</div>
+<!-- Countdown -->
+<main class="countdown-container">
+
+    <h1>🎂 Birthday Surprise 🎂</h1>
+
+    <div class="countdown-box">
+        <div id="countdown">
+            <span id="days">00</span>
+            <small>Days</small>
+
+            <span id="hours">00</span>
+            <small>Hours</small>
+
+            <span id="minutes">00</span>
+            <small>Minutes</small>
+
+            <span id="seconds">00</span>
+            <small>Seconds</small>
+        </div>
+    </div>
+
+    <p class="waiting-text">
+        ⏳ A little more wait... 💖
+    </p>
+
+    <p>
+        I know waiting is hard for you, but some surprises become
+        even sweeter when they're worth waiting for. ❤️✨
+    </p>
+
+    <p>
+        Something special is waiting for you 💙
+    </p>
+
+</main>
+
+<!-- Bottom Right Panda -->
+<div class="panda-wrapper">
+
+    <div
+        class="panda"
+        id="panda"
+        role="button"
+        aria-label="Cute sleepy panda"
+    >
+        🐼
+    </div>
+
+    <div
+        class="panda-speech"
+        id="pandaSpeech"
+        aria-live="polite"
+    >
+        Hi Panda 🐼
+    </div>
+
+</div>
+
+
+<!-- Butterfly Layer -->
+<div
+    class="butterfly-layer"
+    aria-hidden="true"
+></div>
+
+
+<script>
+
+    /* =========================
+       THEME TOGGLE
+    ========================= */
+
+    function toggleTheme(){
+
+        document.body.classList.toggle("dark");
+
+        if(document.body.classList.contains("dark")){
+
+            localStorage.setItem("theme","dark");
+
+        }else{
+
+            localStorage.setItem("theme","light");
+
+        }
+
+    }
+
+
+    /* =========================
+       LOAD SAVED THEME
+    ========================= */
+
+    window.addEventListener("load", () => {
+
+        const theme = localStorage.getItem("theme");
+
+        if(theme === "dark"){
+
+            document.body.classList.add("dark");
+
+        }
+
+    });
+
+
+    /* =========================
+       COUNTDOWN
+    ========================= */
+
+    const allowedNextPages = new Set([
+        "surprise.html",
+        "memories.html"
+    ]);
+
+    const requestedNextPage =
+        new URLSearchParams(window.location.search).get("next");
+
+    const nextPage =
+        allowedNextPages.has(requestedNextPage)
+            ? requestedNextPage
+            : "surprise.html";
+
+    const birthdayDate =
+    new Date("2026-08-04T00:00:00").getTime();
+
+    const daysElement =
+        document.getElementById("days");
+
+    const hoursElement =
+        document.getElementById("hours");
+
+    const minutesElement =
+        document.getElementById("minutes");
+
+    const secondsElement =
+        document.getElementById("seconds");
+
+    const waitingText =
+        document.querySelector(".waiting-text");
+
+    const redirectDelaySeconds = 5;
+    let redirectCountdown = redirectDelaySeconds;
+    let redirectTimer = null;
+    let countdownTimer = null;
+    const forceRedirectTest = true;
+
+    function startRedirectCountdown(){
+
+        if(redirectTimer !== null){
+            return;
+        }
+
+        redirectCountdown = redirectDelaySeconds;
+
+        if(waitingText){
+            waitingText.textContent =
+                "🎉 Surprise is ready! Redirecting in 5 seconds...";
+        }
+
+        daysElement.innerText = "00";
+        hoursElement.innerText = "00";
+        minutesElement.innerText = "00";
+        secondsElement.innerText =
+            redirectCountdown.toString().padStart(2, "0");
+
+        redirectTimer = setInterval(() => {
+
+            redirectCountdown--;
+
+            secondsElement.innerText =
+                redirectCountdown.toString().padStart(2, "0");
+
+            if(redirectCountdown <= 0){
+                clearInterval(redirectTimer);
+                redirectTimer = null;
+
+                sessionStorage.setItem(
+                    "countdownComplete",
+                    "true"
+                );
+
+                window.location.href = "surprise.html";
+            }
+
+        }, 1000);
+    }
+
+    function updateCountdown(){
+
+        if(forceRedirectTest){
+            if(countdownTimer !== null){
+                clearInterval(countdownTimer);
+                countdownTimer = null;
+            }
+
+            startRedirectCountdown();
+            return;
+        }
+
+        const now = new Date().getTime();
+        const difference = birthdayDate - now;
+
+        if(difference > 0){
+            const days = Math.floor(
+                difference / (1000 * 60 * 60 * 24)
+            );
+
+            const hours = Math.floor(
+                (difference % (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60)
+            );
+
+            const minutes = Math.floor(
+                (difference % (1000 * 60 * 60)) /
+                (1000 * 60)
+            );
+
+            const seconds = Math.floor(
+                (difference % (1000 * 60)) / 1000
+            );
+
+            daysElement.innerText =
+                days.toString().padStart(2, "0");
+            hoursElement.innerText =
+                hours.toString().padStart(2, "0");
+            minutesElement.innerText =
+                minutes.toString().padStart(2, "0");
+            secondsElement.innerText =
+                seconds.toString().padStart(2, "0");
+
+            return;
+        }
+
+        clearInterval(countdownTimer);
+        startRedirectCountdown();
+    }
+
+    updateCountdown();
+
+    countdownTimer =
+        setInterval(updateCountdown, 1000);
+
+
+    /* =========================
+       BUTTERFLY EFFECT
+    ========================= */
+
+    const butterflyLayer =
+        document.querySelector(".butterfly-layer");
+
+
+    function createButterfly(x, y){
+
+        const butterfly =
+            document.createElement("span");
+
+
+        const driftX =
+            `${Math.random() * 90 - 45}px`;
+
+        const driftBack =
+            `${Math.random() * 90 - 45}px`;
+
+
+        butterfly.className =
+            "touch-butterfly";
+
+
+        butterfly.innerHTML =
+            "&#129419;";
+
+
+        butterfly.style.left =
+            `${x}px`;
+
+
+        butterfly.style.top =
+            `${y}px`;
+
+
+        butterfly.style.setProperty(
+            "--drift-x",
+            driftX
+        );
+
+
+        butterfly.style.setProperty(
+            "--drift-back",
+            driftBack
+        );
+
+
+        butterfly.style.setProperty(
+            "--flutter-delay",
+            `${Math.random() * .3}s`
+        );
+
+
+        butterflyLayer.appendChild(
+            butterfly
+        );
+
+
+        butterfly.addEventListener(
+            "animationend",
+            () => butterfly.remove(),
+            { once:true }
+        );
+
+    }
+
+
+    window.addEventListener(
+        "pointerdown",
+        (event) => {
+
+            createButterfly(
+                event.clientX,
+                event.clientY
+            );
+
+        }
+    );
+
+
+    /* =========================
+       ORIGINAL BOTTOM PANDA
+    ========================= */
+
+    const panda =
+        document.getElementById("panda");
+
+    const pandaSpeech =
+        document.getElementById("pandaSpeech");
+
+
+    function showPandaSpeech(){
+
+        if(!pandaSpeech){
+
+            return;
+
+        }
+
+
+        pandaSpeech.classList.add(
+            "show"
+        );
+
+
+        if(panda){
+
+            panda.classList.add(
+                "panda-wave"
+            );
+
+        }
+
+
+        setTimeout(
+            () => pandaSpeech.classList.remove("show"),
+            1800
+        );
+
+
+        setTimeout(
+            () => panda && panda.classList.remove("panda-wave"),
+            900
+        );
+
+    }
+
+
+    if(panda){
+
+        panda.addEventListener(
+            "pointerdown",
+            (event) => {
+
+                event.stopPropagation();
+
+                showPandaSpeech();
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+   TOP LEFT KISS PANDA
+   HI CUTIE
+========================= */
+
+const pandaCutie =
+    document.getElementById("pandaCutie");
+
+const pandaCutieSpeech =
+    document.getElementById("pandaCutieSpeech");
+
+
+if(pandaCutie){
+
+    pandaCutie.addEventListener(
+        "pointerdown",
+        (event) => {
+
+            event.stopPropagation();
+
+            pandaCutieSpeech.classList.add("show");
+
+            setTimeout(() => {
+
+                pandaCutieSpeech.classList.remove("show");
+
+            }, 1800);
+
+        }
+    );
+
+}
+
+
+/* =========================
+   TOP RIGHT SLEEPING PANDA
+   HI BABY
+========================= */
+
+const pandaBaby =
+    document.getElementById("pandaBaby");
+
+const pandaBabySpeech =
+    document.getElementById("pandaBabySpeech");
+
+
+if(pandaBaby){
+
+    pandaBaby.addEventListener(
+        "pointerdown",
+        (event) => {
+
+            event.stopPropagation();
+
+            pandaBabySpeech.classList.add("show");
+
+            setTimeout(() => {
+
+                pandaBabySpeech.classList.remove("show");
+
+            }, 1800);
+
+        }
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>
