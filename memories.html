@@ -48,11 +48,11 @@
     <h1>&#128150;Beautiful Memories &#128150;</h1>
 
 
-    <button class="music-btn" id="memoryMusicButton" type="button" onclick="playMemoryMusic()">
+    <button class="music-btn" id="memoryMusicButton" type="button" onclick="playMemoryMusic()" aria-label="Play the song" aria-pressed="false">
         &#127925;Guess the Song😉
     </button>
 
-    <audio id="memoryMusic" loop>
+    <audio id="memoryMusic" loop preload="auto">
         <source src="S2.mpeg" type="audio/mpeg">
     </audio>
 
@@ -669,10 +669,20 @@
 
             : "&#127925; Guess the Song Play";
 
+        memoryMusicButton.setAttribute("aria-pressed", String(isPlaying));
+        memoryMusicButton.setAttribute(
+            "aria-label",
+            isPlaying ? "Pause the song" : "Play the song"
+        );
+
     }
 
 
     function startMemoryMusic(){
+
+        if(memoryMusic.ended){
+            memoryMusic.currentTime = 0;
+        }
 
         const playRequest = memoryMusic.play();
 
