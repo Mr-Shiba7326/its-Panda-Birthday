@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        if(sessionStorage.getItem("countdownComplete") !== "true"){
+            window.location.replace("index.html?next=surprise.html");
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="top-controls" aria-label="Page controls">
+        <button class="control-btn" type="button" onclick="history.back()">
+            &#8592; Back
+        </button>
+        <button class="control-btn" type="button" onclick="window.location.href='index.html'">
+            &#127968; Home
+        </button>
+        <button class="control-btn" type="button" onclick="toggleTheme()">
+            &#127769; Theme
+        </button>
+    </nav>
+    <div class="hearts" aria-hidden="true">
+        <span>&#128150;</span>
+        <span>&#128149;</span>
+        <span>&#128151;</span>
+        <span>&#128152;</span>
+        <span>&#128157;</span>
+    </div>
+    <main class="birthday-page">
+        <h1 class="birthday-title">
+            Happy Birthday &#10084;&#65039;
+        </h1>
+        <p class="birthday-message">
+            &#127874;&#10024; Happy Birthday, Rupali! &#10024;&#127874;<br><br>
+            Today is all about celebrating the amazing person you are. Thank you for being the friend who always listens, supports, and makes life so much brighter. From sharing laughs to creating unforgettable memories, every moment with you is special.<br><br>
+            I hope this year brings you endless happiness, success, good health, and everything you've been wishing for. Never forget how loved, appreciated, and important you are to the people around you.<br><br>
+            Stay the beautiful, kind, and wonderful person that you are. May your day be filled with smiles, surprises, cake, and lots of love! &#128150;<br><br>
+            Happy Birthday to my favorite chapter in my life and forever best friend! &#129395;&#127881;&#128149;
+        </p>
+        <div class="slider-container">
+            <button class="nav-btn" type="button" onclick="prevSlide()" aria-label="Previous memory">&#10094;</button>
+            <div class="slide-track">
+                <!-- Change image src, title, and paragraph text below to add your own photos. -->
+                <article class="slide-card slide-item active">
+                    <img src="R1.jpg" alt="Birthday memory 1">
+                    <h2>My Favorite Person😉 &#128149;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R2.jpg" alt="Birthday memory 2">
+                    <h2>&#127881; Another year of being absolutely amazing.🎀&#128150;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R3.jpg" alt="Birthday memory 3">
+                    <h2>&#127800; Making life brighter just by being herself.💖&#128153;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R4.jpg" alt="Birthday memory 4">
+                    <h2>&#10024; Born to shine, destined to inspire.🎂&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R5.jpg" alt="Birthday memory 5">
+                    <h2>&#127799; The prettiest smile and the kindest heart.&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R6.jpg" alt="Birthday memory 6">
+                    <h2>&#128149; Happiness looks good on you. Happy Birthday!💕&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R7.jpg" alt="Birthday memory 7">
+                    <h2>&#127874; Cheers to more memories, laughter, and adventures together.✨&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R8.jpg" alt="Birthday memory 8">
+                    <h2>&#127800; Keep shining, beautiful. The world needs your light.💕&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R9.jpg" alt="Birthday memory 9">
+                    <h2>&#10024; A friend like you is a gift to everyone around you.🌷&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R10.jpg" alt="Birthday memory 10">
+                    <h2>&#128149; Beautiful soul, beautiful smile, beautiful heart. Happy Birthday!🌸&#127874;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R11.jpg" alt="Birthday memory 11">
+                    <h2>&#10024; Happy Birthday to the girl who makes every moment brighter.☀️&#128150;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R12.jpg" alt="Birthday memory 12">
+                    <h2>&#10024; A beautiful smile, a kind heart, and countless memories.💖✨&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R13.jpg" alt="Birthday memory 13">
+                    <h2>&#10024; 🌸 A beautiful smile that brightens every day.💖&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R15.jpg" alt="Birthday memory 15">
+                    <h2>&#10024; ✨ Pretty face, prettier heart.💕&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R16.jpg" alt="Birthday memory 16">
+                    <h2>&#10024; 🌷 Born to shine and spread happiness.🌟&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R17.jpg" alt="Birthday memory 17">
+                    <h2>&#10024;💖 Happiness looks beautiful on you.&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R18.jpg" alt="Birthday memory 18">
+                    <h2>&#10024; 🎀 Sweet, kind, and absolutely amazing.&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R19.jpg" alt="Birthday memory 19">
+                    <h2>&#10024; 🌸 A little sunshine in human form.☀️&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R20.jpg" alt="Birthday memory 20">
+                    <h2>&#10024;💕Beautiful inside and out.&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R21.jpg" alt="Birthday memory 21">
+                    <h2>&#10024;✨Smiling her way through life.&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R22.jpg" alt="Birthday memory 22">
+                    <h2>&#10024;🌸Elegance, beauty, and grace in one soul.&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R36.jpg" alt="Birthday memory 22">
+                    <h2>&#10024;💕Confidence looks stunning on you.&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R37.jpg" alt="Birthday memory 22">
+                    <h2>&#10024;🎀Cute smile, pure heart.&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R38.jpg" alt="Birthday memory 22">
+                    <h2>&#10024;🌷Living proof that angels exist.&#10024;</h2>
+                    <p></p>
+                </article>
+                <article class="slide-card slide-item">
+                    <img src="R39.jpg" alt="Birthday memory 22">
+                    <h2>&#10024;🌸Just a girl with a beautiful heart.&#10024;</h2>
+                    <p></p>
+                </article>           
+            </div>
+            <button class="nav-btn" type="button" onclick="nextSlide()" aria-label="Next memory">&#10095;</button>
+        </div>
+        <div class="button-row">
+            <button class="surprise-btn" id="musicButton" type="button">
+                &#127925; Play Your Song
+            </button>
+            <button class="surprise-btn" type="button" onclick="window.location.href='memories.html'">
+                &#128150; Your Memories
+            </button>
+        </div>
+        <audio id="music" loop preload="auto">
+            <source src="S1.mpeg" type="audio/mpeg">
+        </audio>
+
+        <button class="back-top-btn" type="button" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            &#8593; Top
+        </button>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
