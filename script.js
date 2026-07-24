@@ -39,6 +39,12 @@ function setMusicButton(isPlaying){
     musicButton.innerHTML = isPlaying
         ? "&#9208; Pause Your Song"
         : "&#127925; Play Your Song";
+
+    musicButton.setAttribute("aria-pressed", String(isPlaying));
+    musicButton.setAttribute(
+        "aria-label",
+        isPlaying ? "Pause your song" : "Play your song"
+    );
 }
 
 function startMusic(){
@@ -46,8 +52,8 @@ function startMusic(){
         return;
     }
 
-    if(!music.src){
-        music.load();
+    if(music.ended){
+        music.currentTime = 0;
     }
 
     const playRequest = music.play();
@@ -55,14 +61,7 @@ function startMusic(){
     if(playRequest){
         playRequest
             .then(() => setMusicButton(true))
-            .catch(() => {
-                music.load();
-                setTimeout(() => {
-                    music.play()
-                        .then(() => setMusicButton(true))
-                        .catch(() => setMusicButton(false));
-                }, 120);
-            });
+            .catch(() => setMusicButton(false));
     }
 }
 
