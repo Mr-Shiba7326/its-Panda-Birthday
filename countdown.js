@@ -13,6 +13,9 @@
     const minutesElement = document.getElementById("minutes");
     const secondsElement = document.getElementById("seconds");
     const waitingText = document.querySelector(".waiting-text");
+    if (!daysElement || !hoursElement || !minutesElement || !secondsElement) {
+    return;
+}
 
     let mainTimer = null;
     let shortTimer = null;
@@ -71,13 +74,12 @@
             setWaitingText("⏳ A little more wait... 💖");
             return;
         }
-
-        if (difference === 0) {
-            openSurprise();
-            return;
-        }
-
-        startShortCountdown();
+clearInterval(mainTimer);
+mainTimer = null;
+        if (difference <= 0) {
+    startShortCountdown();
+    return;
+}
     }
 
     updateCountdown();
