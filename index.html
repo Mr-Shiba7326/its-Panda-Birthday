@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Birthday Surprise</title>
     <link rel="stylesheet" href="style.css">
+    <script src="countdown.js" defer></script>
 </head>
 
 <body class="countdown-body">
@@ -179,139 +180,7 @@
        COUNTDOWN
     ========================= */
 
-    const allowedNextPages = new Set([
-        "surprise.html",
-        "memories.html"
-    ]);
-
-    const requestedNextPage =
-        new URLSearchParams(window.location.search).get("next");
-
-    const nextPage =
-        allowedNextPages.has(requestedNextPage)
-            ? requestedNextPage
-            : "surprise.html";
-
-    const birthdayDate =
-    new Date("2026-08-04T00:00:00").getTime();
-
-    const daysElement =
-        document.getElementById("days");
-
-    const hoursElement =
-        document.getElementById("hours");
-
-    const minutesElement =
-        document.getElementById("minutes");
-
-    const secondsElement =
-        document.getElementById("seconds");
-
-    const waitingText =
-        document.querySelector(".waiting-text");
-
-    const redirectDelaySeconds = 5;
-    let redirectCountdown = redirectDelaySeconds;
-    let redirectTimer = null;
-    let countdownTimer = null;
-    const forceRedirectTest = true;
-
-    function startRedirectCountdown(){
-
-        if(redirectTimer !== null){
-            return;
-        }
-
-        redirectCountdown = redirectDelaySeconds;
-
-        if(waitingText){
-            waitingText.textContent =
-                "🎉 Surprise is ready! Redirecting in 5 seconds...";
-        }
-
-        daysElement.innerText = "00";
-        hoursElement.innerText = "00";
-        minutesElement.innerText = "00";
-        secondsElement.innerText =
-            redirectCountdown.toString().padStart(2, "0");
-
-        redirectTimer = setInterval(() => {
-
-            redirectCountdown--;
-
-            secondsElement.innerText =
-                redirectCountdown.toString().padStart(2, "0");
-
-            if(redirectCountdown <= 0){
-                clearInterval(redirectTimer);
-                redirectTimer = null;
-
-                sessionStorage.setItem(
-                    "countdownComplete",
-                    "true"
-                );
-
-                window.location.href = "surprise.html";
-            }
-
-        }, 1000);
-    }
-
-    function updateCountdown(){
-
-        if(forceRedirectTest){
-            if(countdownTimer !== null){
-                clearInterval(countdownTimer);
-                countdownTimer = null;
-            }
-
-            startRedirectCountdown();
-            return;
-        }
-
-        const now = new Date().getTime();
-        const difference = birthdayDate - now;
-
-        if(difference > 0){
-            const days = Math.floor(
-                difference / (1000 * 60 * 60 * 24)
-            );
-
-            const hours = Math.floor(
-                (difference % (1000 * 60 * 60 * 24)) /
-                (1000 * 60 * 60)
-            );
-
-            const minutes = Math.floor(
-                (difference % (1000 * 60 * 60)) /
-                (1000 * 60)
-            );
-
-            const seconds = Math.floor(
-                (difference % (1000 * 60)) / 1000
-            );
-
-            daysElement.innerText =
-                days.toString().padStart(2, "0");
-            hoursElement.innerText =
-                hours.toString().padStart(2, "0");
-            minutesElement.innerText =
-                minutes.toString().padStart(2, "0");
-            secondsElement.innerText =
-                seconds.toString().padStart(2, "0");
-
-            return;
-        }
-
-        clearInterval(countdownTimer);
-        startRedirectCountdown();
-    }
-
-    updateCountdown();
-
-    countdownTimer =
-        setInterval(updateCountdown, 1000);
-
+    // Countdown behavior is handled by countdown.js.
 
     /* =========================
        BUTTERFLY EFFECT
