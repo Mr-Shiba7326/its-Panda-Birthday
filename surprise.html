@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Happy Birthday</title>
     <link rel="stylesheet" href="style.css">
+    <script src="countdown.js" defer></script>
     <script>
-        if(sessionStorage.getItem("countdownComplete") !== "true"){
+        const unlocked =
+            localStorage.getItem("birthdaySurpriseUnlocked") === "true" ||
+            sessionStorage.getItem("countdownComplete") === "true";
+
+        if(!unlocked){
             window.location.replace("index.html?next=surprise.html");
         }
     </script>
