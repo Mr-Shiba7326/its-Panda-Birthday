@@ -1,7 +1,7 @@
 (() => {
     const SURPRISE_PAGE = "surprise.html";
     const TARGET_TIME = new Date("2026-08-04T00:00:00").getTime();
-    const SHORT_COUNTDOWN_SECONDS = 8;
+    const SHORT_COUNTDOWN_SECONDS = 5;
     const UNLOCK_KEY = "birthdaySurpriseUnlocked";
 
     if (window.location.pathname.endsWith(SURPRISE_PAGE)) {
